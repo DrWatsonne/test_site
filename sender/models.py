@@ -15,7 +15,7 @@ class Message(models.Model):
 
     def send(self, text, email):
         self.email = email
-        sended_msg = mail_admins(self.email, text, False)
+        sended_msg = mail_admins(self.email, text, True)
         if sended_msg > 0:
             self.status = u'Sended'
         else:
