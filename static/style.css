@@ -1,0 +1,8 @@
+.main {
+    background-color: lightgrey;
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    border-color: grey;
+    padding: 10px;
+}

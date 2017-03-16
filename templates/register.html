@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <div id="id_msg"></div>
+    <form method="post" action="register" id="id_form">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+            <tr><td colspan="2">
+                <input type="submit" value="Register" />
+            </td></tr>
+        </table>
+    </form>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $("#id_form").submit(function () {
+            var form = $('#id_form');
+            $.ajax({
+                url: '/register',
+                type: 'POST',
+                data: form.serialize(),
+                dataType: 'json',
+                success: function (data) {
+                    if (data.is_ok) {
+                        window.location.replace("/login");
+                    } else {
+                        jQuery.each(data.msg, function () {
+                            $("#id_msg").text(this);
+                            console.log(this);
+                        })
+                    }
+                }
+            });
+            return false;
+        });
+    </script>
+{% endblock %}

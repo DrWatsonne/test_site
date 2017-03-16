@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <link href="{% static "style.css" %}" rel="stylesheet">
+    <title>{% block title %}Page{% endblock %}</title>
+</head>
+<body>
+    <div class="main">
+        {% block content %}
+        <dev class="box">
+
+        </dev>
+        {% endblock %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    {% block javascript %}{% endblock %}
+</body>
+</html>
